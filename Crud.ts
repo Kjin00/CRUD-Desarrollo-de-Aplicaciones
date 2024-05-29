@@ -1,19 +1,25 @@
-class Crud {
-    private data: {nombre: string, apellido: string, CI: number}[] = [];
+ 
+    class Crud //Se implementa una clase llamada CRUD
+    {           
+   private data: {nombre: string, apellido: string, CI: number}[] = []; // Aquí se está declarando un array llamado data. 
+                                                                            //Este array va a almacenar objetos que tienen tres propiedades: 
+                                                                            //nombre, apellido y CI (Cédula de Identidad). 
 
-    // Crear
-    create(item: {nombre: string, apellido: string, CI: number}) {
-        this.data.push(item);
+   
+    create(item: {nombre: string, apellido: string, CI: number}) // Esta es la función para crear un nuevo registro en el array. 
+        { this.data.push(item);                                   //Toma un objeto con las propiedades nombre, apellido y CI, y lo añade al array.
         return console.log("Registro Completo");
     }
 
-    // Leer
-    read(CI: number) {
+    read(CI: number) // Esta función busca un registro en el array data basándose en el CI. Si encuentra un registro con esa cédula, lo retorna.
+        {
         return this.data.find(item => item.CI === CI);
     }
 
-    // Actualizar
-    update(CI: number, item: {nombre: string, apellido: string, CI: number}) {
+  
+    update(CI: number, item: {nombre: string, apellido: string, CI: number})  //Esta función cusca un registro con la cédula proporcionada  
+                                                                              //y si lo encuentra, reemplaza ese registro con el nuevo objeto proporcionado.
+        {
         let index = this.data.findIndex(dataItem => dataItem.CI === CI);
         if (index !== -1) {
             this.data[index] = item;
@@ -23,8 +29,9 @@ class Crud {
         }
     }
 
-    // Eliminar
-    delete(CI: number) {
+   
+    delete(CI: number) //Esta función busca un registro con la cédula proporcionada y, si lo encuentra, lo elimina del array.
+        {
         let index = this.data.findIndex(dataItem => dataItem.CI === CI);
         if (index !== -1) {
             this.data.splice(index, 1);
